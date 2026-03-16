@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kontakt</title>
+
+<style>
+body{
+font-family: Arial;
+background:#111;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.card{
+background:#1e1e1e;
+padding:25px;
+border-radius:15px;
+max-width:400px;
+margin:auto;
+}
+
+button{
+display:block;
+width:100%;
+margin:10px 0;
+padding:12px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+.link{background:#5865F2;color:white;}
+.copy{background:#333;color:white;}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>DEIN NAME</h1>
+
+<p>Geburtsdatum: <span id="birth">01.01.2000</span></p>
+<p>Alter: <span id="age"></span></p>
+
+<p>📍 <a href="https://maps.google.com/?q=76137+Karlsruhe" target="_blank">76137 Karlsruhe</a></p>
+
+<button onclick="saveContact()">📞 Kontakt speichern</button>
+
+<button onclick="openIG()">📸 Instagram</button>
+
+<button class="copy" onclick="copyText('DISCORDNAME')">Discord kopieren</button>
+
+<button class="copy" onclick="copyText('STEAMNAME')">Steam kopieren</button>
+
+</div>
+
+<script>
+
+const birthDate = new Date("2000-01-01");
+
+function calculateAge(){
+const today = new Date();
+let age = today.getFullYear() - birthDate.getFullYear();
+const m = today.getMonth() - birthDate.getMonth();
+
+if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+age--;
+}
+
+document.getElementById("age").innerText = age;
+}
+
+calculateAge();
+
+function openIG(){
+window.open("https://instagram.com/DEINNAME");
+}
+
+function copyText(text){
+navigator.clipboard.writeText(text);
+alert("Kopiert: " + text);
+}
+
+function saveContact(){
+window.location.href="tel:+49123456789";
+}
+
+</script>
+
+</body>
+</html>
